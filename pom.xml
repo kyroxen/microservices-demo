@@ -21,6 +21,9 @@
         <java.version>11</java.version>
         <spring-boot.version>2.6.1</spring-boot.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
+        <twitter4j-stream.version>4.0.7</twitter4j-stream.version>
+        <spring-boot-configuration-processor.version>2.6.1</spring-boot-configuration-processor.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -36,6 +39,30 @@
                 <version>${spring-boot.version}</version>
                 <scope>test</scope>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-maven-plugin -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+                <scope>provided</scope>
+                <version>${lombok-maven-plugin.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.twitter4j/twitter4j-stream -->
+            <dependency>
+                <groupId>org.twitter4j</groupId>
+                <artifactId>twitter4j-stream</artifactId>
+                <version>${twitter4j-stream.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-configuration-processor -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <optional>true</optional>
+                <version>${spring-boot-configuration-processor.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
