@@ -1,6 +1,7 @@
 package com.microservices.demo.twitter.to.kafka.service;
 
 import com.microservices.demo.twitter.to.kafka.service.config.TwitterToKafkaServiceConfig;
+import com.microservices.demo.twitter.to.kafka.service.runner.TwitterStreamRunner;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,9 +25,12 @@ https://stackoverflow.com/questions/54265552/different-ways-to-run-custom-code-b
 public class TwitterToKafkaServiceApplication implements CommandLineRunner {
 
     private final TwitterToKafkaServiceConfig config;
+    private final TwitterStreamRunner twitterStreamRunner;
 
-    public TwitterToKafkaServiceApplication(TwitterToKafkaServiceConfig config) {
+    public TwitterToKafkaServiceApplication(TwitterToKafkaServiceConfig config,
+                                            TwitterStreamRunner twitterStreamRunner) {
         this.config = config;
+        this.twitterStreamRunner = twitterStreamRunner;
     }
 
     public static void main(String[] args) {
@@ -36,5 +40,6 @@ public class TwitterToKafkaServiceApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.info("Hello there! The twitter keywords are: {}", config.getTwitterKeywords());
+        twitterStreamRunner.runAndFilter(config.getTwitterKeywords());
     }
 }
